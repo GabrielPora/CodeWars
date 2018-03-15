@@ -1,32 +1,21 @@
 function duplicateCount(text){
-	var tmp = "";
-	var tmptext = text.toLowerCase();
-	var count = 0;
-	var max = 0;
-	console.log("text.length: ", text.length);
-	
-	
+	var tmp = ""; // temp new string to ue to compare the letters.
+	var tmptext = text.toLowerCase(); // change text to lowercase to ignore case and i also remove repeated letters
+	var count = 0; // counts the number of times a letter repeats
+	var noRepeats = 0; // this is to store the number of repeats
 	for(i = 0; i < tmptext.length; i++)
 	{
-   console.log("tmptext: ", tmptext);
 		tmp = tmptext[i];
-      console.log("check tmp: ",tmp);
 	  for(j = 0; j < tmptext.length; j++)
 	  {      
-        console.log("tmp: ",tmptext[j]);
     		if (tmp == tmptext[j] && tmp != " ")
     			count++;           
 	  }    
-      console.log("count: ",count);
       var re = new RegExp(tmp, "g");
-      tmptext = tmptext.replace(re, " ");
+      tmptext = tmptext.replace(re, " "); // used to replace tmp in the string with a space
 	  if (count > 1)
-		  max++;
+		  noRepeats++; 
 	  count = 0;
-      console.log("loop: ", i)
-      console.log("max: ",max);
-      console.log("\n");
 	}    
-      console.log("Final max: ",max);
-	  return max;
+	  return noRepeats;
   }
