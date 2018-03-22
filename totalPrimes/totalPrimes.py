@@ -2,8 +2,8 @@ from math import sqrt
 from itertools import count, islice
 import gmpy2
 
-def all_primes(start, end):
-        return list(sorted(set(range(start,end+1)).difference(set((p * f) for p in range(2, int(end ** 0.5) + 2) for f in range(2, (end/p) + 1)))))
+# def get_total_primes(start, end):
+#         return list(sorted(set(range(start,end+1)).difference(set((p * f) for p in range(2, int(end ** 0.5) + 2) for f in range(2, (end/p) + 1)))))
 
 def primes(n, b):    
     prime = []
@@ -24,6 +24,8 @@ def isPrime(n):
     
 
 def get_total_primes(a, b):
+#     print ("A: ", a)
+#     print ("B: ", b)
     prime = primes(a, b)
     count = 0
     countCheck = 0
