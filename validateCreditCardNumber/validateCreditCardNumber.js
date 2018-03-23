@@ -1,25 +1,56 @@
 function validate(n){
+	var numArray = n.toString();
   var numString = n.toString();
-  var numlength = numString.length;
-  var myArray = numString
-  for(var i=0; i<myArray.length; i++) { myArray[i] = parseInt(myArray[i], 10); }
-  console.log("MyArray: ", myArray[2]);
-//   var b = n.split('').map(Number);
-  if (numlength % 2 == 0)
-  {
-    var index = 0;
-    while (numString[index])
-    {
+	var numlength = numString.length;
+  var tmpNum = [];
+  var total = 0;
+  var multi = 1;
+	if (numlength % 2 == 0)
+	{
+	  for (var index = 0; index < numString.length; index++)
+	  {
       var replaceNum = parseInt(numString[index]);
-      replaceNum = replaceNum * 2;
-      replaceNum = replaceNum.toString();
-      numString[index] = replaceNum;
-      index+=2;
-    }
-  }
+      if(index % 2 == 0)
+      {
+        replaceNum = replaceNum * 2;
+        if (replaceNum > 9)
+          replaceNum = replaceNum - 9;
+        replaceNum = replaceNum.toString();
+        tmpNum[index] = replaceNum;
+        numString[index] = replaceNum;
+        total = total + parseInt(tmpNum[index]);
+      }
+      else
+      {
+        tmpNum[index] = replaceNum;
+        total = total + parseInt(tmpNum[index]);
+      }
+	  }
+	}
+	else
+	{
+	  for (var index = 0; index < numString.length; index++)
+	  {
+      var replaceNum = parseInt(numString[index]);
+      if(index % 2 != 0)
+      {
+        replaceNum = replaceNum * 2;
+        if (replaceNum > 9)
+          replaceNum = replaceNum - 9;
+        replaceNum = replaceNum.toString();
+        tmpNum[index] = replaceNum;
+        numString[index] = replaceNum;
+        total = total + parseInt(tmpNum[index]);
+      }
+      else
+      {
+        tmpNum[index] = replaceNum;
+        total = total + parseInt(tmpNum[index]);
+      }
+	  }
+	}
+  if (total % 10 == 0)
+    return true;
   else
-  {
+    return false;
   }
-  console.log(numlength);
-  console.log(numString[1]);
-}
