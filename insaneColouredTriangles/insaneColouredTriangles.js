@@ -8,10 +8,7 @@ function triangle(row) {
 	for(var i = 0; i < maxRow - 1; i++) // Start Row
 	{
 	  tmpColpre = row;
-	  var maxCol = tmpColpre.length;
-	  pre = tmpColpre[i];
-	  next = tmpColpre[i+1];
-	  for(var j = 0; j < maxCol - 1; j++) // Complete Row e.g Columb
+	  for(var j = 0; j < tmpColpre.length - 1; j++) // Complete Row e.g Columb
 	  {
 		pre = tmpColpre[j];
 		next = tmpColpre[j+1];
