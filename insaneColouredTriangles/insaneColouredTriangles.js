@@ -1,17 +1,15 @@
 function triangle(row) {
 	var maxRow = row.length;
-	var tmpColpre = [];
 	var tmpCol = [];
 	var pre = "";
 	var next = "";
 	
 	for(var i = 0; i < maxRow - 1; i++) // Start Row
 	{
-	  tmpColpre = row;
-	  for(var j = 0; j < tmpColpre.length - 1; j++) // Complete Row e.g Columb
+	  for(var j = 0; j < row.length - 1; j++) // Complete Row e.g Columb
 	  {
-		pre = tmpColpre[j];
-		next = tmpColpre[j+1];
+		pre = row[j];
+		next = row[j+1];
 		if ((pre == "G" && next == "B") || (pre == "B" && next == "G")) // R
 		  tmpCol[j] = "R";
 		else if (pre == "R" && next == "R") // R
