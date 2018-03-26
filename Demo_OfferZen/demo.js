@@ -3,27 +3,22 @@
 
 function solution(A) {
     // write your code in JavaScript (Node.js 8.9.4)
-    var tmp = A.sort(function(a, b){return a-b});
-    var len = A.length
+    A = A.sort(function(a, b) {return a- b});
     var small = 0;
-    var pre = tmp[0];
-    var next = tmp[1];
-    var i = 0;
-    for(i = 0; i < A.length; i++)
-    {
-        pre = tmp[0];
-        next = tmp[1];
-        if (tmp[i] > 0 && i > 0)
-        {
-            if(tmp[i] != i && small < i && i != pre && i != next)
-            {
-                small = small + i;
-            }
+// 	var pre = "";
+// 	var next = "";
+    for(var i = A[0]; i < A[A.length - 1]; i++) // Start Row
+	{
+	   // console.log("Index: ", A[A.length - 1])
+        if(!A.includes(i) && i > 0)
+        { 
+            small = small + i;
+            return small;
         }
-    }
+	}
     if (small == 0)
     {
-        var stringtmp = String(tmp[tmp.length-1]);
+        var stringtmp = String(A[A.length-1]);
         small = parseInt(stringtmp) + 1;
         if (small <= 0)
             small = 1;
