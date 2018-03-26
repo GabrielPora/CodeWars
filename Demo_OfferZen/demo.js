@@ -3,22 +3,25 @@
 
 function solution(A) {
     // write your code in JavaScript (Node.js 8.9.4)
-    A = A.sort(function(a, b) {return a- b});
-    var small = 0;
-// 	var pre = "";
-// 	var next = "";
-    for(var i = A[0]; i < A[A.length - 1]; i++) // Start Row
-	{
-	   // console.log("Index: ", A[A.length - 1])
-        if(!A.includes(i) && i > 0)
-        { 
-            small = small + i;
+    A = A.sort(function(a, b){return a- b});
+    var small = 0 ;
+    var pre = 0;
+    var next = 0;
+    var diff = 0;
+    for(var i = A[0]; i < A[A.length-1]; i++)
+    {
+        pre = A[i];
+        next = A[i+1];
+        diff = next - pre;
+        if(pre > 0 && next > 0 && diff > 1)
+        {
+            small = pre + 1;
             return small;
         }
-	}
+    }
     if (small == 0)
     {
-        var stringtmp = String(A[A.length-1]);
+        var stringtmp = String(A[A.length - 1]);
         small = parseInt(stringtmp) + 1;
         if (small <= 0)
             small = 1;
