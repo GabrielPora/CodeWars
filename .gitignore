@@ -12,5 +12,6 @@ a.out
 .VC.*
 *.nfs.*
 *.plist
+.idea
 node_modules
 SnowCrash.iso
