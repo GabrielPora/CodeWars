@@ -4,6 +4,7 @@ function triangle(row) {
 	var pre = '';
 	var next = '';
 	var i = 0;
+
 	
 	while (0 < maxRow - 1)
 	{
