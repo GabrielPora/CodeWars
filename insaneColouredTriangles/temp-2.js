@@ -1,34 +1,27 @@
 function triangle(row) {
 	var maxRow = row.length;
-	var tmpCol = new Array(row.length);
+	var tmpCol = [];
 	var pre = '';
 	var next = '';
-	var i = 0;
-
 	
-	while (0 < maxRow - 1)
+	for(var i = 0; i < maxRow - 1; i++) // Start Row
 	{
-		pre = row[i];
-		next = row[i+1];
+	  for(var j = 0; j < row.length - 1; j++) // Complete Row e.g Columb
+	  {
+		pre = row[j];
+		next = row[j+1];
 		if ((pre == 'G' && next == 'B') || (pre == 'B' && next == 'G')) // R
-		  tmpCol[i] = 'R';
-		else if (pre == next) // R G B
-		  tmpCol[i] = pre;
+		  tmpCol[j] = 'R';
+		else if (pre == 'R' && next == 'R') // R
+		  tmpCol[j] = 'R';
+		else if (pre == 'B' && next == 'B') // B
+		  tmpCol[j] = 'B';
 		else if ((pre == 'G' && next == 'R') || (pre == 'R' && next == 'G')) // B
-		  tmpCol[i] = 'B';
+		  tmpCol[j] = 'B';
 		else // G
-		  tmpCol[i] = 'G';	
-      
-     if (maxRow-2 == i)
-      {
-		i = 0;	
-        row = [];
-	  	row = tmpCol;
-        tmpCol = [];
-        maxRow -= 1;
-      }
-      else 
-      i++;
-	}  
+		  tmpCol[j] = 'G';
+	  } 
+	  row = tmpCol;
+	}	
 	return row[0];
   }
