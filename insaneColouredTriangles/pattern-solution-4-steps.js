@@ -26,40 +26,61 @@ function triangle(row) {
 
 	if (maxRow >= 4) {
 
-		while (4 <= maxRow && 3 <= maxRow - 1) {
+		var checkAll = [];
+		while (4 <= maxRow) {
 			firstColour = row[i];
 			secondColour = row[i + 1];
 			thirdColour = row[i + 2];
-			fourthColour = row[i + 4];
-			var check = [firstColour, secondColour, thirdColour];
+			fourthColour = row[i + 3];
+			checkAll = [firstColour, secondColour, thirdColour, fourthColour];
 
 			if (secondColour == thirdColour && secondColour == firstColour && secondColour == fourthColour)
 				tmpCol[i] = firstColour;
-			if (firstColour == fourthColour)
+			if (firstColour == fourthColour) {
 				tmpCol[i] = firstColour;
-			if (secondColour == thirdColour && fourthColour != firstColour && (secondColour != fourthColour || firstColour != secondColour))
+			}
+			if (secondColour == thirdColour && fourthColour != firstColour && (secondColour != fourthColour && firstColour != secondColour))
 				tmpCol[i] = secondColour;
-			if (firstColour == thirdColour && fourthColour != secondColour)
+			if (firstColour == thirdColour && fourthColour != secondColour && firstColour != fourthColour)
 				tmpCol[i] = secondColour;
-			if (firstColour != thirdColour && fourthColour == secondColour)
+			if (firstColour != thirdColour && fourthColour == secondColour && firstColour != fourthColour)
 				tmpCol[i] = thirdColour;
-			if (firstColour == secondColour && fourthColour != thirdColour)
+			if (firstColour == secondColour && fourthColour != thirdColour && firstColour != fourthColour)
 				tmpCol[i] = thirdColour;
-			if (firstColour != secondColour && fourthColour == thirdColour)
+			if (firstColour != secondColour && fourthColour == thirdColour && firstColour != fourthColour) 
 				tmpCol[i] = secondColour;
 
-
-			if (secondColour == firstColour && secondColour != thirdColour)
-				tmpCol[i] = thirdColour;
-			if (secondColour == thirdColour && secondColour != firstColour)
-				tmpCol[i] = firstColour;
-			if (firstColour != secondColour && firstColour != thirdColour && secondColour != thirdColour)
-				tmpCol[i] = secondColour;
-
-			if (firstColour == thirdColour && secondColour != firstColour) {
-				if (check.includes('R') && check.includes('B'))
+			if (firstColour == secondColour && firstColour == thirdColour && firstColour != fourthColour) {
+				if (checkAll.includes('R') && checkAll.includes('B'))
 					tmpCol[i] = 'G';
-				else if (check.includes('G') && check.includes('B'))
+			 else if (checkAll.includes('G') && checkAll.includes('B'))
+					tmpCol[i] = 'R';
+				else 
+					tmpCol[i] = 'B';
+			}
+
+			if (secondColour == fourthColour && secondColour == thirdColour && secondColour != firstColour && firstColour != fourthColour) {
+				if (checkAll.includes('R') && checkAll.includes('B'))
+					tmpCol[i] = 'G';
+				else if (checkAll.includes('G') && checkAll.includes('B'))
+					tmpCol[i] = 'R';
+				else
+					tmpCol[i] = 'B';
+			}
+
+			if (secondColour == fourthColour && firstColour == thirdColour && secondColour != firstColour && firstColour != fourthColour) {
+				if (checkAll.includes('R') && checkAll.includes('B'))
+					tmpCol[i] = 'G';
+				else if (checkAll.includes('G') && checkAll.includes('B'))
+					tmpCol[i] = 'R';
+				else
+					tmpCol[i] = 'B';
+			}
+
+			if (secondColour == firstColour && fourthColour == thirdColour && secondColour != fourthColour && firstColour != fourthColour) {
+				if (checkAll.includes('R') && checkAll.includes('B')) 
+					tmpCol[i] = 'G';
+				 else if (checkAll.includes('G') && checkAll.includes('B')) 
 					tmpCol[i] = 'R';
 				else
 					tmpCol[i] = 'B';
@@ -71,15 +92,14 @@ function triangle(row) {
 				row = tmpCol;
 				tmpCol = [];
 				maxRow -= 3;
-			} else {
+			} else 
 				i++;
-			}
 		}
 	}
 
 	if (maxRow > 2) {
 
-		while (3 <= maxRow && 2 <= maxRow - 1) {
+		while (3 <= maxRow) {
 			firstColour = row[i];
 			secondColour = row[i + 1];
 			thirdColour = row[i + 2];
