@@ -10,18 +10,17 @@ Test.describe('Insane Coloured Triangles', _ => {
 	  ['BGBB', 'B'], // Rule 1: if 1st and 4th the same then answer the same as 1st 
 	  ['RGBG', 'B'], // Rule 2: if 2nd and 4th the same but 1st and 3rd different then answer the same as 3rd
 	  ['RBRGBRB', 'G'],
-	  ['RGRB', 'G'], // Rule 3: if 1st and 3rd the same but 2nd and 4th different then answer the same as 2nd
+	  ['RGRB', 'G'], // Rule 3:2: opposite Rule 3: if 1st and 3rd the same but 2nd and 4th different then answer the same as 2nd
 	  ['RGBR', 'R'], // Rule 1
 	  ['RRGB', 'G'], // Rule 5: if the 1st and 2nd or 3rd and 4th the same but 3rd and 4th different then answer will be the 3rd 
 	  ['RGBB', 'G'], // Rule 5: but opposite 
-	  ['RGBG', 'B'],
 	  ['RRRG', 'B'], // Rule 4: if first 3 or last 3 the same and 4th or 1st respectivly different then answer is the oposite colour to the two colours used.
 	  ['GBBB', 'R'], // if first 3 or last 3 the same and 4th or 1st respectivly different then answer is the oposite colour to the two colours used.
 	  ['GRRR', 'B'], // Rule 4: but opposite
 	  ['RGRR', 'R'],
 	  ['RGGR', 'R'],
 	  ['GRRB', 'R'], // Rule 6: if the 2nd and 3rd are  the same but 1st and 4th differnt then answer will be 2nd
-	  ['BBRR', 'G'],
+	  ['BBRR', 'G'], // Rule 7: if the 1st and 2nd same and 3rd and 4th same but 2nd and 3rd differnent then answer will be the opposite of those two colours
 	  ['RBBR', 'R'],
 	  ['GGRG', 'G'],
 	  ['RRGBRGBB', 'G'],
@@ -38,20 +37,23 @@ Test.describe('Insane Coloured Triangles', _ => {
   })
 
 //   Rules that I have in place
-//   Rule 1
+//   Rule 1 GRBG => G 
 //   if 1st and 4th the same then answer the same as 1st
 
-//   Rule 2
+//   Rule 2 RGBG => B or RGRB => G 
 //   if 2nd and 4th the same but 1st and 3rd different then answer the same as 3rd
 
-//   Rule 3
+//   Rule 3 same as Rule 2 but opposite RGRB => G 
 //   if 1st and 3rd the same but 2nd and 4th different then answer the same as 2nd
 
-//   Rule 4
+//   Rule 4 RRRG => B
 //   if first 3 or last 3 the same and 4th or 1st respectivly different then answer is the oposite colour to the two colours used
 
-//   Rule 5
+//   Rule 5 RRGB => G or RGBB => G
 //   if the 1st and 2nd the same but 3rd and 4th different then answer will be the 3rd 
 
-//   Rule 6: 
+//   Rule 6: GRRB => R
 //   if the 2nd and 3rd are the same but 1st and 4th differnt then answer will be 2nd
+
+//   Rule 7: BBRR => G
+//   if the 1st and 2nd same and 3rd and 4th same but 2nd and 3rd differnent then answer will be the opposite of those two colours

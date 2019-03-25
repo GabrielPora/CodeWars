@@ -38,17 +38,22 @@ function triangle(row) {
 			if (firstColour == fourthColour) {
 				tmpCol[i] = firstColour;
 			} else {
+				// Rule 6
 				if (secondColour == thirdColour && fourthColour != firstColour && (secondColour != fourthColour && firstColour != secondColour))
 					tmpCol[i] = secondColour;
+				// Rule 2
 				if (firstColour == thirdColour && fourthColour != secondColour)
 					tmpCol[i] = secondColour;
+				// Rule 2 opposite
 				if (firstColour != thirdColour && fourthColour == secondColour)
 					tmpCol[i] = thirdColour;
+				// Rule 5
 				if (firstColour == secondColour && fourthColour != thirdColour)
 					tmpCol[i] = thirdColour;
+				// Rule 5 opposite
 				if (firstColour != secondColour && fourthColour == thirdColour)
 					tmpCol[i] = secondColour;
-
+				// Rule 4 Need to find out about this
 				if (firstColour == secondColour && firstColour == thirdColour) {
 					if (checkAll.includes('R') && checkAll.includes('B'))
 						tmpCol[i] = 'G';
@@ -57,7 +62,7 @@ function triangle(row) {
 					else
 						tmpCol[i] = 'B';
 				}
-
+				// Rule 4
 				if (secondColour == fourthColour && secondColour == thirdColour && secondColour != firstColour) {
 					if (checkAll.includes('R') && checkAll.includes('B'))
 						tmpCol[i] = 'G';
@@ -66,7 +71,7 @@ function triangle(row) {
 					else
 						tmpCol[i] = 'B';
 				}
-
+				// Rule 4 opposite
 				if (secondColour == fourthColour && firstColour == thirdColour && secondColour != firstColour) {
 					if (checkAll.includes('R') && checkAll.includes('B'))
 						tmpCol[i] = 'G';
@@ -76,6 +81,7 @@ function triangle(row) {
 						tmpCol[i] = 'B';
 				}
 
+				// Rule 7
 				if (secondColour == firstColour && fourthColour == thirdColour && secondColour != fourthColour) {
 					if (checkAll.includes('R') && checkAll.includes('B'))
 						tmpCol[i] = 'G';
@@ -154,20 +160,23 @@ function triangle(row) {
 // }
 
 //   Rules that I have in place
-//   Rule 1:
+//   Rule 1 GRBG => G 
 //   if 1st and 4th the same then answer the same as 1st
 
-//   Rule 2:
+//   Rule 2 RGBG => B or RGRB => G 
 //   if 2nd and 4th the same but 1st and 3rd different then answer the same as 3rd
 
-//   Rule 3:
+//   Rule 3 same as Rule 2 but opposite RGRB => G 
 //   if 1st and 3rd the same but 2nd and 4th different then answer the same as 2nd
 
-//   Rule 4:
+//   Rule 4 RRRG => B
 //   if first 3 or last 3 the same and 4th or 1st respectivly different then answer is the oposite colour to the two colours used
 
-//   Rule 5:
+//   Rule 5 RRGB => G or RGBB => G
 //   if the 1st and 2nd the same but 3rd and 4th different then answer will be the 3rd 
 
-//   Rule 6: 
+//   Rule 6: GRRB => R
 //   if the 2nd and 3rd are the same but 1st and 4th differnt then answer will be 2nd
+
+//   Rule 7: BBRR => G
+//   if the 1st and 2nd same and 3rd and 4th same but 2nd and 3rd differnent then answer will be the opposite of those two colours
