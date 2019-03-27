@@ -20,6 +20,7 @@ function triangle(row) {
 	var secondColour = '';
 	var thirdColour = '';
 	var i = 0;
+	console.log('maxRow: '+maxRow);
 
 	if (maxRow == 1)
 		return row[0];
@@ -39,35 +40,27 @@ function triangle(row) {
 				tmpCol[i] = firstColour;
 			} else {
 				// Rule 6
-				if (secondColour == thirdColour && fourthColour != firstColour && (secondColour != fourthColour && firstColour != secondColour))
+				if (secondColour == thirdColour && fourthColour != firstColour && (secondColour != fourthColour && firstColour != secondColour)){
 					tmpCol[i] = secondColour;
+				}
 				// Rule 2
-				if (firstColour == thirdColour && fourthColour != secondColour)
+				else if (firstColour == thirdColour && fourthColour != secondColour && firstColour != secondColour){
 					tmpCol[i] = secondColour;
+				}
 				// Rule 2 opposite
-				if (firstColour != thirdColour && fourthColour == secondColour)
+				else if (firstColour != thirdColour && fourthColour == secondColour && secondColour != thirdColour){
 					tmpCol[i] = thirdColour;
+				}
 				// Rule 5
-				if (firstColour == secondColour && fourthColour != thirdColour)
+				else if (firstColour == secondColour && fourthColour != thirdColour && secondColour != thirdColour){
 					tmpCol[i] = thirdColour;
+				}
 				// Rule 5 opposite
-				if (firstColour != secondColour && fourthColour == thirdColour)
+				else if (firstColour != secondColour && fourthColour == thirdColour && secondColour != thirdColour){
 					tmpCol[i] = secondColour;
+				}
 				// Rule 4 Need to find out about this
-				if (firstColour == secondColour && firstColour == thirdColour) {
-					tmpCol[i] = checkColour(checkAll);
-				}
-				// Rule 4
-				if (secondColour == fourthColour && secondColour == thirdColour && secondColour != firstColour) {
-					tmpCol[i] = checkColour(checkAll);
-				}
-				// Rule 4 opposite
-				if (secondColour == fourthColour && firstColour == thirdColour && secondColour != firstColour) {
-					tmpCol[i] = checkColour(checkAll);
-				}
-
-				// Rule 7
-				if (secondColour == firstColour && fourthColour == thirdColour && secondColour != fourthColour) {
+				else {
 					tmpCol[i] = checkColour(checkAll);
 				}
 			}
@@ -100,12 +93,7 @@ function triangle(row) {
 			if (secondColour == thirdColour && secondColour == firstColour)
 				tmpCol[i] = firstColour;
 			if (firstColour == thirdColour && secondColour != firstColour) {
-				if (check.includes('R') && check.includes('B'))
-					tmpCol[i] = 'G';
-				else if (check.includes('G') && check.includes('B'))
-					tmpCol[i] = 'R';
-				else
-					tmpCol[i] = 'B';
+				tmpCol[i] = checkColour(check);
 			}
 
 			if (maxRow - 3 == i) {
@@ -157,6 +145,9 @@ function checkColour(checkAll) {
 //   if 1st and 3rd the same but 2nd and 4th different then answer the same as 2nd
 
 //   Rule 4 RRRG => B
+//   if first 3 or last 3 the same and 4th or 1st respectivly different then answer is the oposite colour to the two colours used
+
+//   Rule 4 same as Rule 4 but opposite GBBB => R
 //   if first 3 or last 3 the same and 4th or 1st respectivly different then answer is the oposite colour to the two colours used
 
 //   Rule 5 RRGB => G or RGBB => G
