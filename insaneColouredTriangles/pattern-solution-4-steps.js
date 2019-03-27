@@ -13,14 +13,13 @@ function triangle(row) {
 	// once lenght is 2, do a normal solve.
 
 	var maxRow = row.length;
-	var modCheck = row.length % 2;
+	// var modCheck = row.length % 3;
 	row = row.split("");
 	var tmpCol = [];
 	var firstColour = '';
 	var secondColour = '';
 	var thirdColour = '';
 	var i = 0;
-	console.log('maxRow: '+maxRow);
 
 	if (maxRow == 1)
 		return row[0];
@@ -28,6 +27,7 @@ function triangle(row) {
 	if (maxRow >= 4) {
 
 		var checkAll = [];
+		var fourthColour = '';
 		while (4 <= maxRow) {
 			firstColour = row[i];
 			secondColour = row[i + 1];
@@ -40,7 +40,7 @@ function triangle(row) {
 				tmpCol[i] = firstColour;
 			} else {
 				// Rule 6
-				if (secondColour == thirdColour && fourthColour != firstColour && (secondColour != fourthColour && firstColour != secondColour)){
+				if (secondColour == thirdColour && secondColour != fourthColour && firstColour != secondColour){
 					tmpCol[i] = secondColour;
 				}
 				// Rule 2
