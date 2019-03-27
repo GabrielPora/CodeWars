@@ -55,40 +55,20 @@ function triangle(row) {
 					tmpCol[i] = secondColour;
 				// Rule 4 Need to find out about this
 				if (firstColour == secondColour && firstColour == thirdColour) {
-					if (checkAll.includes('R') && checkAll.includes('B'))
-						tmpCol[i] = 'G';
-					else if (checkAll.includes('G') && checkAll.includes('B'))
-						tmpCol[i] = 'R';
-					else
-						tmpCol[i] = 'B';
+					tmpCol[i] = checkColour(checkAll);
 				}
 				// Rule 4
 				if (secondColour == fourthColour && secondColour == thirdColour && secondColour != firstColour) {
-					if (checkAll.includes('R') && checkAll.includes('B'))
-						tmpCol[i] = 'G';
-					else if (checkAll.includes('G') && checkAll.includes('B'))
-						tmpCol[i] = 'R';
-					else
-						tmpCol[i] = 'B';
+					tmpCol[i] = checkColour(checkAll);
 				}
 				// Rule 4 opposite
 				if (secondColour == fourthColour && firstColour == thirdColour && secondColour != firstColour) {
-					if (checkAll.includes('R') && checkAll.includes('B'))
-						tmpCol[i] = 'G';
-					else if (checkAll.includes('G') && checkAll.includes('B'))
-						tmpCol[i] = 'R';
-					else
-						tmpCol[i] = 'B';
+					tmpCol[i] = checkColour(checkAll);
 				}
 
 				// Rule 7
 				if (secondColour == firstColour && fourthColour == thirdColour && secondColour != fourthColour) {
-					if (checkAll.includes('R') && checkAll.includes('B'))
-						tmpCol[i] = 'G';
-					else if (checkAll.includes('G') && checkAll.includes('B'))
-						tmpCol[i] = 'R';
-					else
-						tmpCol[i] = 'B';
+					tmpCol[i] = checkColour(checkAll);
 				}
 			}
 
@@ -98,8 +78,7 @@ function triangle(row) {
 				row = tmpCol;
 				tmpCol = [];
 				maxRow -= 3;
-			} 
-			else
+			} else
 				i++;
 		}
 	}
@@ -144,19 +123,27 @@ function triangle(row) {
 	if (row.length == 2) {
 		if (row[0] == row[1])
 			return row[0];
-		if (row.includes('R') && row.includes('B'))
-			row[0] = 'G';
-		else if (row.includes('G') && row.includes('B'))
-			row[0] = 'R';
-		else
-			row[0] = 'B';
+		else 
+		 return row[0] = checkColour(row);
 	}
 
 	return row[0];
 }
 
+function checkColour(checkAll) {
+	if (checkAll.includes('R') && checkAll.includes('B')){
+		return 'G';
+	}
+	else if (checkAll.includes('G') && checkAll.includes('B')){
+		return 'R';
+	}
+	else {
+		return 'B';
+	}
+}
+
 // function Rule1(){
-	
+
 // }
 
 //   Rules that I have in place
