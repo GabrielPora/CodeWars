@@ -13,6 +13,10 @@ function triangle(row) {
 	// once lenght is 2, do a normal solve.
 
 	var maxRow = row.length;
+
+	if (maxRow == 1)
+		return row[0];
+		
 	// var modCheck = row.length % 3;
 	row = row.split("");
 	var tmpCol = [];
@@ -20,9 +24,6 @@ function triangle(row) {
 	var secondColour = '';
 	var thirdColour = '';
 	var i = 0;
-
-	if (maxRow == 1)
-		return row[0];
 
 	if (maxRow >= 4) {
 
